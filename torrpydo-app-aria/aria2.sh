@@ -1,0 +1,1 @@
+aria2c --conf-path=/home/davinci/Dev/torrpydo-app-aria/aria2.conf
