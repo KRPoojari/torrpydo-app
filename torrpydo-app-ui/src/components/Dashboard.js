@@ -1,38 +1,51 @@
 import React, { useState, useEffect } from 'react'
 import {
-    Flex, Spacer, Heading, Progress, Stack, ButtonGroup, Button, VStack, HStack, InputGroup,
-    Table,
-    Thead,
-    Tbody,
-    Tfoot,
-    Tr,
-    Th,
-    Td,
-    TableCaption,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    useDisclosure,
-    Input,
-    Box
-
+    Flex, Box, Spacer, Heading, Progress, Stack, ButtonGroup, Button, Input, VStack, HStack, InputGroup,
+    Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption,
+    Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
+    useDisclosure
 } from "@chakra-ui/react"
 import Menu from './Menu'
 import { BiPlay, BiPause, BiStop, BiTrash, BiPlus } from "react-icons/bi"
 
+/*
+function submitForm(contentType, data, setResponse) {
 
+    axios({
+
+        url: `http://localhost:5000/add`,
+
+        method: 'POST',
+
+        data: data,
+
+        headers: {
+
+            'Content-Type': contentType
+
+        }
+
+    }).then((response) => {
+
+        setResponse(response.data);
+
+    }).catch((error) => {
+
+        setResponse("error");
+
+    })
+
+}
+
+*/
 function Dashboard() {
     const [state, setState] = useState()
     useEffect(() => {
         setInterval(() => {
             getData()
         }, 2500);
-    },[])
-    
+    }, [])
+
     const getData = async () => {
         const response = await fetch("http://localhost:5000/status")
         const data = await response.json()
@@ -53,14 +66,7 @@ function Dashboard() {
         setState(data.resp)
         console.log(data)
     }
-
-    const addTask = async () => {
-        const response = await fetch("http://localhost:5000/add")
-        const data = await response.json()
-        setState(data.resp)
-        console.log(data)
-    }
-
+    
     const removeTask = async () => {
         const response = await fetch("http://localhost:5000/remove")
         const data = await response.json()
@@ -69,9 +75,22 @@ function Dashboard() {
     }
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+/*
+    const [title, setTitle] = useState("");
 
+    const [file, setFile] = useState(null);
 
+    const [desc, setDesc] = useState("");
 
+    
+    const addTask = async () => {
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("file", file);
+        formData.append("desc", desc);
+        submitForm("multipart/form-data", formData, (msg) => console.log(msg));
+    }
+*/
     return (
         <>
             <Menu />
@@ -147,7 +166,7 @@ function Dashboard() {
                                         ))
                                     }
 
-                                   
+
                                 </Flex>
                                 <Spacer />
                                 <Stack>
@@ -172,17 +191,17 @@ function Dashboard() {
                                         <ModalHeader>Add Torrent</ModalHeader>
                                         <ModalCloseButton size="sm" />
                                         <ModalBody>
-                                            Choose the .torrent file to add
+                                            <h2> Choose the .torrent file to add </h2>
+                                            {/* <form>
+                                                <input type="file" name="file" onChange={(e) => setFile(e.target.files[0])} />
+                                            </form> */}
                                         </ModalBody>
 
                                         <ModalFooter>
                                             <InputGroup>
-                                               
-                                                    <Button type="submit" colorScheme="blue" size="sm" mr={3} onClick={addTask}>
-                                                        Add
-                                                    </Button>
-                                            </InputGroup> 
-                                            
+                                                <Input type="button" value="Upload as FormData"  />
+                                            </InputGroup>
+
                                         </ModalFooter>
                                     </ModalContent>
                                 </Modal>
