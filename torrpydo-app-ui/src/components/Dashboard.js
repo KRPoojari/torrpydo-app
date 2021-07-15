@@ -159,7 +159,7 @@ function Dashboard() {
                                                         letterSpacing="wide"
                                                         fontSize="3xl"
                                                         textTransform="uppercase">
-                                                        <Progress size="xs" colorScheme="pink" value={"progress"} />
+                                                        <Progress size="xs" colorScheme="pink" value={"x[progress"} />
                                                     </Box>
                                                 </HStack>
                                             </Flex>
@@ -192,14 +192,14 @@ function Dashboard() {
                                         <ModalCloseButton size="sm" />
                                         <ModalBody>
                                             <h2> Choose the .torrent file to add </h2>
-                                            {/* <form>
-                                                <input type="file" name="file" onChange={(e) => setFile(e.target.files[0])} />
-                                            </form> */}
+                                            <form>
+                                                <input type="file" name="file" formMethod="" />
+                                            </form>
                                         </ModalBody>
 
                                         <ModalFooter>
                                             <InputGroup>
-                                                <Input type="button" value="Upload as FormData"  />
+                                                <Input type="button" value="Upload"  />
                                             </InputGroup>
 
                                         </ModalFooter>
@@ -210,23 +210,37 @@ function Dashboard() {
                         </VStack>
                     </Flex>
                     <Flex rounded="3xl" direction="column" w="65vw" h="80vh" bg="blackAlpha.600" ml="12" mb="12">
-                        <Flex w="100vw">
+                        <Flex w="55vw">
                             <Heading color="white" m="12" size="xs">
                                 TASK MANAGER
                             </Heading>
                         </Flex>
-
-                        <Table height="50vh" w="50vw" variant="simple" size="sm" mt="5" m="10">
-                            <Thead color="gray.100" >
+                        <Flex>
+                        <Table variant="simple" size="sm" mt="5" m="10">
+                            <Thead>
 
                                 <Tr>
-                                    <Th>NAME</Th>
-                                    <Th>PROGRESS</Th>
-                                    <Th>STATUS</Th>
+                                    <Th color="white">NAME</Th>
+                                    <Th color="white">PROGRESS</Th>
+                                    <Th color="white">STATUS</Th>
                                 </Tr>
 
                             </Thead>
+                            <Tbody>
+                                <Tr>
+                                    <Td>
+                                    
+                                    </Td>
+                                    <Td>
+                                     
+                                    </Td>
+                                    <Td>
+                                    
+                                    </Td>
+                                </Tr>
+                            </Tbody>
                         </Table>
+                        </Flex>
                     </Flex>
                 </Flex>
             </Flex>
