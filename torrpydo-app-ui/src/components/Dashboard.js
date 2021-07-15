@@ -3,18 +3,27 @@ import {
     Flex, Box, Spacer, Heading, Progress, Stack, ButtonGroup, Button, Input, VStack, HStack, InputGroup,
     Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption,
     Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
-    useDisclosure
+    useDisclosure, FormControl, StackDivider
 } from "@chakra-ui/react"
 import Menu from './Menu'
 import { BiPlay, BiPause, BiStop, BiTrash, BiPlus } from "react-icons/bi"
+import axios from 'axios'
 
 function Dashboard() {
     const [state, setState] = useState()
+    const [files, setFiles] = useState({
+        selectedFile: null
+    })
+
     useEffect(() => {
         setInterval(() => {
             getData()
         }, 2500);
     }, [])
+
+    const onFileChange = (e) => {
+        setFiles({ selectedFile: e.target.files[0] })
+    }
 
     const getData = async () => {
         const response = await fetch("http://localhost:5000/status")
@@ -44,6 +53,18 @@ function Dashboard() {
         console.log(data)
     }
 
+    const onFileUpload = async (e) => {
+        e.preventDefault()
+        const formData = new FormData();
+        formData.append(
+            "file",
+            files.selectedFile,
+            files.selectedFile.name
+        );
+
+        axios.post("http://localhost:5000/add", formData);
+    }
+
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
@@ -52,6 +73,13 @@ function Dashboard() {
             <Flex bg="blackAlpha.800">
                 <Flex w="35vw" bg="blackAlpha.400" ml="12" mt="12" mb="12" rounded="3xl" >
                     <Heading color="white" align="center" size="xs" m="10"> STATISTICS </Heading>
+                    <VStack divider={<StackDivider borderColor="gray.200" />}
+                        spacing={4}
+                        align="stretch">
+                        <Box h="10" w="25" bg="white"></Box>
+                        <Box h="10" bg="white">2</Box>
+                        <Box h="10" bg="white">3</Box>
+                    </VStack>
                 </Flex>
 
                 <Flex direction="column">
@@ -151,12 +179,9 @@ function Dashboard() {
 
                                         <ModalFooter>
                                             <form>
-                                                <input type="file" name="file" formMethod="POST" />
+                                                <input type="file" name="file" onChange={onFileChange}></input>
+                                                <input type="submit" onClick={onFileUpload}></input>
                                             </form>
-                                            <InputGroup>
-                                                <Input type="button" bgColor="telegram.500" color="white" value="Upload" />
-                                            </InputGroup>
-
                                         </ModalFooter>
                                     </ModalContent>
                                 </Modal>
