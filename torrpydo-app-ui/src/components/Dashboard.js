@@ -8,36 +8,6 @@ import {
 import Menu from './Menu'
 import { BiPlay, BiPause, BiStop, BiTrash, BiPlus } from "react-icons/bi"
 
-/*
-function submitForm(contentType, data, setResponse) {
-
-    axios({
-
-        url: `http://localhost:5000/add`,
-
-        method: 'POST',
-
-        data: data,
-
-        headers: {
-
-            'Content-Type': contentType
-
-        }
-
-    }).then((response) => {
-
-        setResponse(response.data);
-
-    }).catch((error) => {
-
-        setResponse("error");
-
-    })
-
-}
-
-*/
 function Dashboard() {
     const [state, setState] = useState()
     useEffect(() => {
@@ -66,7 +36,7 @@ function Dashboard() {
         setState(data.resp)
         console.log(data)
     }
-    
+
     const removeTask = async () => {
         const response = await fetch("http://localhost:5000/remove")
         const data = await response.json()
@@ -75,27 +45,12 @@ function Dashboard() {
     }
 
     const { isOpen, onOpen, onClose } = useDisclosure()
-/*
-    const [title, setTitle] = useState("");
 
-    const [file, setFile] = useState(null);
-
-    const [desc, setDesc] = useState("");
-
-    
-    const addTask = async () => {
-        const formData = new FormData();
-        formData.append("title", title);
-        formData.append("file", file);
-        formData.append("desc", desc);
-        submitForm("multipart/form-data", formData, (msg) => console.log(msg));
-    }
-*/
     return (
         <>
             <Menu />
             <Flex bg="blackAlpha.800">
-                <Flex w="35vw" h="130vh" bg="blackAlpha.400" ml="12" mt="12" mb="12" rounded="3xl" >
+                <Flex w="35vw" bg="blackAlpha.400" ml="12" mt="12" mb="12" rounded="3xl" >
                     <Heading color="white" align="center" size="xs" m="10"> STATISTICS </Heading>
                 </Flex>
 
@@ -191,15 +146,15 @@ function Dashboard() {
                                         <ModalHeader>Add Torrent</ModalHeader>
                                         <ModalCloseButton size="sm" />
                                         <ModalBody>
-                                            <h2> Choose the .torrent file to add </h2>
-                                            <form>
-                                                <input type="file" name="file" formMethod="" />
-                                            </form>
+                                            <h2> Choose the .torrent file to add to Download </h2>
                                         </ModalBody>
 
                                         <ModalFooter>
+                                            <form>
+                                                <input type="file" name="file" formMethod="POST" />
+                                            </form>
                                             <InputGroup>
-                                                <Input type="button" value="Upload"  />
+                                                <Input type="button" bgColor="telegram.500" color="white" value="Upload" />
                                             </InputGroup>
 
                                         </ModalFooter>
@@ -216,30 +171,30 @@ function Dashboard() {
                             </Heading>
                         </Flex>
                         <Flex>
-                        <Table variant="simple" size="sm" mt="5" m="10">
-                            <Thead>
+                            <Table variant="simple" size="md" mt="5" m="10">
+                                <Thead>
 
-                                <Tr>
-                                    <Th color="white">NAME</Th>
-                                    <Th color="white">PROGRESS</Th>
-                                    <Th color="white">STATUS</Th>
-                                </Tr>
+                                    <Tr>
+                                        <Th color="white">NAME</Th>
+                                        <Th color="white">PROGRESS</Th>
+                                        <Th color="white">STATUS</Th>
+                                    </Tr>
 
-                            </Thead>
-                            <Tbody>
-                                <Tr>
-                                    <Td>
-                                    
-                                    </Td>
-                                    <Td>
-                                     
-                                    </Td>
-                                    <Td>
-                                    
-                                    </Td>
-                                </Tr>
-                            </Tbody>
-                        </Table>
+                                </Thead>
+                                <Tbody>
+                                    <Tr>
+                                        <Td color="white">
+                                            Fedora-Workstation-Live-x86_64
+                                        </Td>
+                                        <Td color="white">
+                                            75%
+                                        </Td>
+                                        <Td>
+                                            <Button size="xs" bgColor="violet" color="black">PAUSED</Button>
+                                        </Td>
+                                    </Tr>
+                                </Tbody>
+                            </Table>
                         </Flex>
                     </Flex>
                 </Flex>
