@@ -3,7 +3,7 @@ import {
     Flex, Box, Spacer, Heading, Progress, Stack, ButtonGroup, Button, Input, VStack, HStack, InputGroup,
     Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption,
     Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
-    useDisclosure, FormControl, StackDivider
+    useDisclosure, FormControl, StackDivider, Image, Text
 } from "@chakra-ui/react"
 import Menu from './Menu'
 import { BiPlay, BiPause, BiStop, BiTrash, BiPlus } from "react-icons/bi"
@@ -71,15 +71,25 @@ function Dashboard() {
         <>
             <Menu />
             <Flex bg="blackAlpha.800">
-                <Flex w="35vw" bg="blackAlpha.400" ml="12" mt="12" mb="12" rounded="3xl" >
-                    <Heading color="white" align="center" size="xs" m="10"> STATISTICS </Heading>
-                    <VStack divider={<StackDivider borderColor="gray.200" />}
-                        spacing={4}
-                        align="stretch">
-                        <Box h="10" w="25" bg="white"></Box>
-                        <Box h="10" bg="white">2</Box>
-                        <Box h="10" bg="white">3</Box>
-                    </VStack>
+                <Flex w="35vw" bg="blackAlpha.400" ml="12" mt="12" mb="12" rounded="3xl" direction="column">
+                    <Box size = "sm" bg="white" m="10" p="10" rounded="3xl">
+                        <Heading m="10">Download Directory</Heading>  
+                        <Box>
+                            <Text>Downloaded Files are being saved at</Text>
+                        </Box>
+                        <Box>
+                            <Text as="kbd">/home/Dev/torrpydo-app</Text>
+                        </Box>
+                    </Box>
+                    <Box size = "sm" bg="white" m="10" p="10" rounded="3xl">
+                        <Heading m="10">Tasks</Heading>  
+                        <Text>Current Tasks are </Text>
+                        <Text as="b">1</Text>
+                        <Text color="green">Active</Text>
+                        <Text as="b">1</Text>
+                        <Text color="red">Paused</Text>
+
+                    </Box>
                 </Flex>
 
                 <Flex direction="column">
