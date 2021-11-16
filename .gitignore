@@ -1,2 +1,2 @@
 *.log
-./torrpydo-app-ui/node_modules
+/torrpydo-app-ui/node_modules
