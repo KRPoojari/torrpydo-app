@@ -71,14 +71,14 @@ function Dashboard() {
         <>
             <Menu />
             <Flex bg="blackAlpha.800">
-                <Flex w="35vw" bg="blackAlpha.400" ml="12" mt="12" mb="12" rounded="3xl" direction="column">
+                <Flex w="35%" h="100%" bg="blackAlpha.400" ml="12" mt="12" mb="12" rounded="3xl" direction="column">
                     <Box size = "sm" bg="white" m="10" p="10" rounded="3xl">
-                        <Heading m="10">Download Directory</Heading>  
+                        <Heading color="black" m="10">Download Directory</Heading>  
                         <Box>
-                            <Text>Downloaded Files are being saved at</Text>
+                            <Text color="black">Downloaded Files are being saved at</Text>
                         </Box>
                         <Box>
-                            <Text as="kbd">/home/Dev/torrpydo-app</Text>
+                            <Text color="blackAlpha.500" as="kbd">/home/Dev/torrpydo-app</Text>
                         </Box>
                     </Box>
                     <Box size = "sm" bg="white" m="10" p="10" rounded="3xl">
@@ -199,7 +199,7 @@ function Dashboard() {
                             </Stack>
                         </VStack>
                     </Flex>
-                    <Flex rounded="3xl" direction="column" w="65vw" h="80vh" bg="blackAlpha.600" ml="12" mb="12">
+                    <Flex rounded="3xl" direction="column" bg="blackAlpha.600" ml="12" mb="12">
                         <Flex w="55vw">
                             <Heading color="white" m="12" size="xs">
                                 TASK MANAGER
